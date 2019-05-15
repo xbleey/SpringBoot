@@ -25,7 +25,7 @@ public class BootApplicationTests {
     public void contextLoads() {
         List<User> users = userService.findAll();
         logger.info(users.toString());
-        System.out.println("123");
+        System.out.println("i am the fat pig");
     }
 
 }
