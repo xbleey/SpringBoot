@@ -51,8 +51,7 @@
 <div class="container-fluid">
     <div class="row">
         <!-- 引入sidebar-->
-        <div th:replace="commons/bar::#sidebar(activeUri='index')"></div>
-
+        <div th:replace="commons/bar::#sidebar(activeUri='emps')"></div>
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <div class="chartjs-size-monitor"
                  style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
@@ -88,7 +87,7 @@
 
             <!--            <canvas class="my-4 chartjs-render-monitor" id="myChart" width="1524" height="643" style="display: block; width: 1524px; height: 643px;"></canvas>-->
 
-            <h3>列表</h3>
+            <h3><buttonx class="btn btn-sm btn-success">添加</buttonx></h3>
             <div class="table-responsive">
                 <table class="table table-striped table-sm">
                     <thead>
@@ -97,9 +96,20 @@
                         <th>用户名</th>
                         <th>密码</th>
                         <th>等级</th>
+                        <th>操作</th>
                     </tr>
                     </thead>
                     <tbody>
+                    <tr th:each="user : ${users}">
+                        <td th:text="${user.userId}">user_id</td>
+                        <td th:text="${user.userName}">user_name</td>
+                        <td th:text="${user.userPass}">user_pass</td>
+                        <td th:text="${user.userLevel}">user_level</td>
+                        <td>
+                            <button class="btn btn-sm btn-primary">修改</button>
+                            <button class="btn btn-sm btn-danger">删除</button>
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
             </div>

@@ -59,8 +59,6 @@
     </div>
     <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
     <p class="mt-5 mb-3 text-muted text-center" th:text="${message}" th:if="!${#strings.isEmpty(message)}"></p>
-    <p class="mt-5 mb-3 text-muted text-center" th:text="${#request.getAttribute(message)}"
-       th:if="!${#strings.isEmpty(#request.getAttribute(message))}"></p>
     <p class="mt-5 mb-3 text-muted text-center">&copy; 2017-2019</p>
 </form>
 </body>

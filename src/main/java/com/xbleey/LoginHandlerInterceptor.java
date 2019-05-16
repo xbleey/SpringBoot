@@ -33,6 +33,9 @@ public class LoginHandlerInterceptor implements HandlerInterceptor {
             request.setAttribute("message","无权限，请登录");
             request.getRequestDispatcher("/go").forward(request,response);
         }
+        else {
+            return true;
+        }
         return false;
     }
 

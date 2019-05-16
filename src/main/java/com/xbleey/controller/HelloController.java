@@ -39,11 +39,11 @@ public class HelloController {
     @Autowired
     UserService userService;
 
-    @RequestMapping(value = "/index")
-    public String go(Model model) {
+    @RequestMapping(value = "/emps")
+    public String emp(Model model) {
         List<User> users =userService.findAll();
         model.addAttribute("users",users);
-        return "index";
+        return "emps";
     }
 
     @PostMapping(value = "/login")
@@ -51,7 +51,7 @@ public class HelloController {
     public  String login(Model model, @RequestParam("username") String userName, @RequestParam("password") String password, HttpSession session){
         if(!StringUtils.isEmpty(userName)&&"123".equals(password)){
             session.setAttribute("loginUser",userName);
-            return go(model);
+            return "index";
         }
         else {
             model.addAttribute("message","登录失败");
