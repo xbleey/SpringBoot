@@ -18,14 +18,17 @@ public class BootApplicationTests {
 
     Logger logger = LoggerFactory.getLogger(getClass());
 
-    @Autowired
-    UserService userService;
 
     @Test
     public void contextLoads() {
-        List<User> users = userService.findAll();
-        logger.info(users.toString());
-        System.out.println("fuck the pig");
+       char[] nameArray = "胡俊豪".toCharArray();
+       for(int i =0; i<nameArray.length;i++){
+           if(String.valueOf(nameArray[i]).matches("[\u4e00-\u9fa5]")){
+               System.out.println("yes");
+           }
+       }
+        //logger.info(String.valueOf(zh));
     }
 
 }
+

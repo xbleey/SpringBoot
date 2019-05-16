@@ -30,12 +30,13 @@ public class MyConfig implements WebMvcConfigurer {
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/go").setViewName("login");
+        registry.addViewController("/pig").setViewName("pig");
 
     }
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**").excludePathPatterns("/go", "/login","/files/**","/webjars/**");
+        //registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/**").excludePathPatterns("/go", "/login","/files/**","/webjars/**");
     }
 }
  
