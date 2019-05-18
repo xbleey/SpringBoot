@@ -74,9 +74,31 @@ public class HelloController {
 
     //处理添加请求
     @PostMapping("/emp")
-    public String handleEmp(Model model,User user){
+    public String handleEmp(Model model, User user) {
         System.out.println(user.toString());
         userService.saveUser(user);
+        return "redirect:/emps";
+    }
+
+    //修改请求
+    @GetMapping("/emps/{id}")
+    public String editEmp(Model model, @PathVariable("id") Integer userId) {
+        User user = userService.getOneUserByUserId(userId);
+        model.addAttribute("user", user);
+        return "emp/add";
+    }
+
+    //提交修改
+    @PutMapping("/emp")
+    public String updateEmp(Model model, User user) {
+        userService.updateUser(user);
+        return "redirect:/emps";
+    }
+
+    //提交删除请求
+    @DeleteMapping("/emps/{id}")
+    public String deleteEmp(Model model, @PathVariable("id") Integer userId) {
+        userService.deleteUser(userId);
         return "redirect:/emps";
     }
 }

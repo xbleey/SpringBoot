@@ -88,20 +88,22 @@
 
             <!--            <canvas class="my-4 chartjs-render-monitor" id="myChart" width="1524" height="643" style="display: block; width: 1524px; height: 643px;"></canvas>-->
 
-            <form method="post">
+            <form method="post" action="/emp">
+                <input type="hidden" name="_method" value="put" th:if="${user!=null}"/>
+                <input type="hidden" name="userId"  th:if="${user!=null}" th:value="${user.userId}" />
                 <div class="form-group">
                     <label >用户名</label>
-                    <input type="text" class="form-control" id="user-name-label"  placeholder="请输入用户名" name="userName">
+                    <input type="text" class="form-control" id="user-name-label"  placeholder="请输入用户名" name="userName" th:value="${user!=null}?${user.userName}"/>
                     <small id="emailHelp" class="form-text text-muted">请勿输入特殊字符。</small>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">密码</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="请输入密码" name="userPass">
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="请输入密码" name="userPass" th:value="${user!=null}?${user.userPass}"/>
                 </div>
                 <div class="form-group">
                     <label for="exampleFormControlSelect1">员工等级</label>
-                    <select class="form-control" id="exampleFormControlSelect1" name="userLevel">
-                        <option th:each="i:${#numbers.sequence(1,100)}" th:text="${i}" th:value="${i}"></option>
+                    <select class="form-control" id="exampleFormControlSelect1" name="userLevel" >
+                        <option th:each="i:${#numbers.sequence(1,100)}" th:text="${i}" th:value="${i}" th:selected="${user!=null}?${user.userLevel==i}"></option>
                     </select>
                 </div>
                 <button type="submit" class="btn btn-primary">提交</button>

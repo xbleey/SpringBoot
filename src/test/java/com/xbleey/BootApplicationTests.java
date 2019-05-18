@@ -23,9 +23,15 @@ public class BootApplicationTests {
 
     @Test
     public void contextLoads() {
+//        User user = new User();
+//        user.setUserId(1);
+//        user.setUserName("good");
+//        user.setUserPass("123");
+//        user.setUserLevel(12);
+//        userService.updateUser(user);
         List<User> users = userService.findAll();
         logger.info(users.toString());
-        System.out.println("fuck the pig");
+
     }
 
 }

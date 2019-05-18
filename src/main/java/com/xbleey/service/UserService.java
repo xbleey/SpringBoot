@@ -37,6 +37,23 @@ public class UserService {
     public void saveUser(User user) {
         userDao.save(user);
     }
+
+    public User getOneUserByUserId(Integer userId){
+        List<User> users = userDao.getByUserId(userId);
+        if(users.isEmpty()){
+            return null;
+        }else{
+            return users.get(0);
+        }
+    }
+
+    public void updateUser(User user){
+        userDao.updateUserByUserId(user.getUserName(),user.getUserPass(),user.getUserLevel(),user.getUserId());
+    }
+
+    public void deleteUser(Integer userId){
+        userDao.deleteById(userId);
+    }
 }
  
 
