@@ -39,31 +39,45 @@ public class HelloController {
     @Autowired
     UserService userService;
 
-    @RequestMapping(value = "/emps")
-    public String emp(Model model) {
-        List<User> users =userService.findAll();
-        model.addAttribute("users",users);
-        return "emps";
-    }
-
     @PostMapping(value = "/login")
     //@RequestMapping(value = "/login",method = RequestMethod.POST)
-    public  String login(Model model, @RequestParam("username") String userName, @RequestParam("password") String password, HttpSession session){
-        if(!StringUtils.isEmpty(userName)&&"123".equals(password)){
-            session.setAttribute("loginUser",userName);
+    public String login(Model model, @RequestParam("username") String userName, @RequestParam("password") String password, HttpSession session) {
+        if (!StringUtils.isEmpty(userName) && "123".equals(password)) {
+            session.setAttribute("loginUser", userName);
             return "index";
-        }
-        else {
-            model.addAttribute("message","登录失败");
+        } else {
+            model.addAttribute("message", "登录失败");
             return "login";
         }
     }
 
     @ResponseBody
     @RequestMapping(value = "/hello")
-    public String hello(Model model){
-        model.addAttribute("name","123");
+    public String hello(Model model) {
+        model.addAttribute("name", "123");
         return "hello";
+    }
+
+
+    @RequestMapping(value = "/emps")
+    public String emp(Model model) {
+        List<User> users = userService.findAll();
+        model.addAttribute("users", users);
+        return "emps";
+    }
+
+    //跳转添加员工页面
+    @GetMapping("/emp")
+    public String addEmp(Model model) {
+        return "emp/add";
+    }
+
+    //处理添加请求
+    @PostMapping("/emp")
+    public String handleEmp(Model model,User user){
+        System.out.println(user.toString());
+        userService.saveUser(user);
+        return "redirect:/emps";
     }
 }
  

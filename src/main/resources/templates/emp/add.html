@@ -51,7 +51,8 @@
 <div class="container-fluid">
     <div class="row">
         <!-- 引入sidebar-->
-        <div th:replace="commons/bar::#sidebar(activeUri='emps')"></div>
+        <div th:replace="commons/bar::#sidebar(activeUri='index')"></div>
+
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
             <div class="chartjs-size-monitor"
                  style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
@@ -87,32 +88,24 @@
 
             <!--            <canvas class="my-4 chartjs-render-monitor" id="myChart" width="1524" height="643" style="display: block; width: 1524px; height: 643px;"></canvas>-->
 
-            <h3><a  class="btn btn-sm btn-success"  href="/emps" th:href="@{/emp}">员工信息添加</a></h3>
-            <div class="table-responsive">
-                <table class="table table-striped table-sm">
-                    <thead>
-                    <tr>
-                        <th>编号</th>
-                        <th>用户名</th>
-                        <th>密码</th>
-                        <th>等级</th>
-                        <th>操作</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr th:each="user : ${users}">
-                        <td th:text="${user.userId}">user_id</td>
-                        <td th:text="${user.userName}">user_name</td>
-                        <td th:text="${user.userPass}">user_pass</td>
-                        <td th:text="${user.userLevel}">user_level</td>
-                        <td>
-                            <button class="btn btn-sm btn-primary">修改</button>
-                            <button class="btn btn-sm btn-danger">删除</button>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
+            <form method="post">
+                <div class="form-group">
+                    <label >用户名</label>
+                    <input type="text" class="form-control" id="user-name-label"  placeholder="请输入用户名" name="userName">
+                    <small id="emailHelp" class="form-text text-muted">请勿输入特殊字符。</small>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">密码</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="请输入密码" name="userPass">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlSelect1">员工等级</label>
+                    <select class="form-control" id="exampleFormControlSelect1" name="userLevel">
+                        <option th:each="i:${#numbers.sequence(1,100)}" th:text="${i}" th:value="${i}"></option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary">提交</button>
+            </form>
         </main>
     </div>
 </div>

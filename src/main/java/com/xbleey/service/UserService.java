@@ -18,7 +18,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * 〈一句话功能简述〉<br> 
+ * 〈一句话功能简述〉<br>
  * 〈〉
  *
  * @author 11580
@@ -30,8 +30,12 @@ public class UserService {
     @Resource
     UserDao userDao;
 
-    public List<User> findAll(){
-        return  userDao.findAll();
+    public List<User> findAll() {
+        return userDao.findAll();
+    }
+
+    public void saveUser(User user) {
+        userDao.save(user);
     }
 }
  
