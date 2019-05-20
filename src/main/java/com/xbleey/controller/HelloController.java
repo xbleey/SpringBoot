@@ -11,6 +11,7 @@
 package com.xbleey.controller;
 
 import com.xbleey.entity.User;
+import com.xbleey.exception.UserNotExist;
 import com.xbleey.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -53,8 +54,11 @@ public class HelloController {
 
     @ResponseBody
     @RequestMapping(value = "/hello")
-    public String hello(Model model) {
-        model.addAttribute("name", "123");
+    public String hello(Model model,@RequestParam("user") String user) {
+        if(!user.equals("123")){
+            throw new UserNotExist();
+        }
+        model.addAttribute("user", user);
         return "hello";
     }
 
