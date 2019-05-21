@@ -37,7 +37,7 @@ public class MyException {
         hashMap.put("code", "user.notExist");
         hashMap.put("message", e.getMessage());
         hashMap.put("exception", e.getClass());
-        request.setAttribute("expt",hashMap);
+        request.setAttribute("expt",hashMap)    ;
         return "forward:/error";
        //return hashMap;
     }

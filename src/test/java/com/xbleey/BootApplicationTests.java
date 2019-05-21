@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.sql.DataSource;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
@@ -20,6 +21,9 @@ public class BootApplicationTests {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    DataSource dataSource;
 
     @Test
     public void contextLoads() {
@@ -33,5 +37,11 @@ public class BootApplicationTests {
         logger.info(users.toString());
 
     }
+
+    @Test
+    public void testDruid(){
+        System.out.println(dataSource.getClass());
+    }
+
 
 }
