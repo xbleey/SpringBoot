@@ -13,7 +13,6 @@ package com.xbleey.controller;
 import com.xbleey.exception.UserNotExist;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
@@ -33,13 +32,13 @@ public class MyException {
     @ExceptionHandler(UserNotExist.class)
     public String handleException(Exception e, HttpServletRequest request) {
         HashMap<String, Object> hashMap = new HashMap<>();
-        request.setAttribute("javax.servlet.error.status_code",501);
+        request.setAttribute("javax.servlet.error.status_code", 501);
         hashMap.put("code", "user.notExist");
         hashMap.put("message", e.getMessage());
         hashMap.put("exception", e.getClass());
-        request.setAttribute("expt",hashMap)    ;
+        request.setAttribute("expt", hashMap);
         return "forward:/error";
-       //return hashMap;
+        //return hashMap;
     }
 }
  

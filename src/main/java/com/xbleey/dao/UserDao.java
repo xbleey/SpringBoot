@@ -20,14 +20,14 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 /**
- * 〈一句话功能简述〉<br> 
+ * 〈一句话功能简述〉<br>
  * 〈userdao〉
  *
  * @author 11580
  * @create 2019/5/12 0012
  * @since 1.0.0
  */
-public interface UserDao extends JpaRepository<User,Integer> {
+public interface UserDao extends JpaRepository<User, Integer> {
     public List<User> getByUserId(Integer userId);
 
     @Transactional

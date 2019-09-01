@@ -26,7 +26,7 @@ import javax.persistence.*;
 public class User {
     @Id
     @Column(name = "user_id", unique = true)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+        
     private Integer userId;
     @Column(name = "user_name")
     private String userName;

@@ -54,8 +54,8 @@ public class HelloController {
 
     @ResponseBody
     @RequestMapping(value = "/hello")
-    public String hello(Model model,@RequestParam("user") String user) {
-        if(!user.equals("123")){
+    public String hello(Model model, @RequestParam("user") String user) {
+        if (!user.equals("123")) {
             throw new UserNotExist();
         }
         model.addAttribute("user", user);

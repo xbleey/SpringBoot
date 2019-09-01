@@ -11,14 +11,14 @@
 package com.xbleey.exception;
 
 /**
- * 〈一句话功能简述〉<br> 
+ * 〈一句话功能简述〉<br>
  * 〈〉
  *
  * @author 11580
  * @create 2019/5/20 0020
  * @since 1.0.0
  */
-public class UserNotExist extends RuntimeException{
+public class UserNotExist extends RuntimeException {
     public UserNotExist() {
         super("用户不存在");
     }

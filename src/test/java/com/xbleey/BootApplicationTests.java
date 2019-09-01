@@ -39,7 +39,7 @@ public class BootApplicationTests {
     }
 
     @Test
-    public void testDruid(){
+    public void testDruid() {
         System.out.println(dataSource.getClass());
     }
 

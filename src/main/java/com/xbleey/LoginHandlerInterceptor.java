@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * 〈一句话功能简述〉<br> 
+ * 〈一句话功能简述〉<br>
  * 〈登录拦截器〉
  *
  * @author 11580
@@ -28,12 +28,11 @@ public class LoginHandlerInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         Object loginUser = request.getSession().getAttribute("loginUser");
-        if(loginUser==null){
+        if (loginUser == null) {
             //未登录,返回登录页
-            request.setAttribute("message","无权限，请登录");
-            request.getRequestDispatcher("/go").forward(request,response);
-        }
-        else {
+            request.setAttribute("message", "无权限，请登录");
+            request.getRequestDispatcher("/go").forward(request, response);
+        } else {
             return true;
         }
         return false;
